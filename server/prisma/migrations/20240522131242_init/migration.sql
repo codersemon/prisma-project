@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE `users_meta` ADD COLUMN `name` VARCHAR(191) NULL,
+    ADD COLUMN `phone` VARCHAR(191) NULL,
+    ADD COLUMN `photo` VARCHAR(191) NULL;

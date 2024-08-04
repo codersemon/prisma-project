@@ -1,0 +1,163 @@
+/* Common CSS - Start  */
+.cursor-pointer{
+  cursor: pointer;
+}
+/* Common CSS - End  */
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  height: 30px;
+  aspect-ratio: 2.5;
+  --_g: no-repeat radial-gradient(farthest-side, #000 90%, #0000);
+  background: var(--_g), var(--_g), var(--_g), var(--_g);
+  background-size: 20% 50%;
+  animation: l43 1s infinite linear;
+}
+@keyframes l43 {
+  0% {
+    background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+      calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+  }
+  16.67% {
+    background-position: calc(0 * 100% / 3) 0, calc(1 * 100% / 3) 50%,
+      calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+  }
+  33.33% {
+    background-position: calc(0 * 100% / 3) 100%, calc(1 * 100% / 3) 0,
+      calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+  }
+  50% {
+    background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 100%,
+      calc(2 * 100% / 3) 0, calc(3 * 100% / 3) 50%;
+  }
+  66.67% {
+    background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+      calc(2 * 100% / 3) 100%, calc(3 * 100% / 3) 0;
+  }
+  83.33% {
+    background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+      calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 100%;
+  }
+  100% {
+    background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+      calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+  }
+}
+
+
+/* blur removal css  */
+@keyframes removeBlur {
+  0% {
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+  }
+}
+
+.blur-up {
+  animation: removeBlur 1.5s forwards;
+}
+.gray-filter {
+  filter: grayscale(1) !important;
+}
+
+/* remove dropdown arrow where have no dropdown  */
+.no-child::before {
+  content: none !important;
+}
+
+header .navbar.navbar-expand-xl .navbar-nav .nav-item + .nav-item {
+  margin-left: calc(10px + (40 - 30) * ((100vw - 1200px) / (1920 - 1200)));
+}
+
+/* modal css  */
+.theme-modal .modal-dialog .modal-content .modal-header .btn-close {
+  padding: 5px 8px 10px;
+}
+
+/* user profile page  */
+.dashboard-left-sidebar .nav-item:hover a {
+  color: var(--theme-color) !important;
+  background-color: #e0efec !important;
+}
+.user-dashboard-section .dashboard-right-sidebar .dashboard-bg-box {
+  width: 100%;
+}
+@media (max-width: 991px) {
+  .user-dashboard-section .dashboard-left-sidebar {
+    z-index: 15;
+  }
+}
+
+/* Forgot password form  */
+.otp-input {
+  margin: 0 5px;
+}
+.otp-input:first-child {
+  margin-left: 0;
+}
+.otp-input:last-child {
+  margin-right: 0;
+}
+
+/* Popup common css */
+.modal-open {
+  overflow-y: inherit !important;
+}
+.theme-modal {
+  padding-right: 0 !important;
+}
+
+/* Mini Cart css */
+header .onhover-dropdown .onhover-div .cart-list li {
+	width: 100%;
+}
+
+/* Product single page */
+.product-main-1.no-arrow .slider-image {
+  height: 500px !important;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-main-1.no-arrow .slider-image img{
+  object-fit: cover !important;
+}
+.bottom-slider-image .sidebar-image img {
+  width: 100%;
+  height: 100px !important;
+  object-fit: cover;
+}
+
+/* Photo zoom component css  */
+.iiz__hint {
+  bottom: 47px;
+}
+
+/* Sticky top css */
+.custom-sticky-top{
+  position: sticky;
+  top: 110px;
+}
+
+.custome-pagination .pagination .page-item .page-link:hover {
+  background-color: var(--theme-color) !important;
+}
+
+
+/* rating star size css */
+.rating li .feather {
+  width: 16px;
+  height: 16px;
+}
+.ratingScore {
+  min-width: 50px;
+  display: inline-block;
+  text-align: end;
+}

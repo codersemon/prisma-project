@@ -1,0 +1,273 @@
+datasource db {
+  provider = "mysql"
+  url      = env("MYSQL_STRING")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// user model 
+model users {
+  id        Int         @id @default(autoincrement())
+  email     String      @unique
+  password  String
+  meta      users_meta?
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+// user's meta model
+model users_meta {
+  id              Int              @id @default(autoincrement())
+  user            users            @relation(fields: [userId], references: [id])
+  userId          Int              @unique
+  name            String?
+  photo           String?
+  phone           String?
+  products        products[]
+  carts           productCarts[]
+  media           media[]
+  addresses       addresses[]
+  orders          orders[]
+  wishlists       wishlists[]
+  product_reviews productReviews[]
+  role            Role             @default(customer)
+  access_token    String?
+  isVerified      Boolean          @default(false)
+  isInTrash       Boolean          @default(false)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+// enum / fixed value for user role 
+enum Role {
+  customer
+  administrator
+}
+
+// user address model 
+model addresses {
+  id               Int         @id @default(autoincrement())
+  type             AddressType @default(home)
+  full_name        String
+  email            String
+  phone            String
+  street_address   String
+  street_address_2 String?
+  district         String
+  country          String
+  zip_code         Int
+  user             users_meta  @relation(fields: [userId], references: [id])
+  userId           Int
+  billing_orders   orders[]    @relation("billing")
+  shipping_orders  orders[]    @relation("shipping")
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+}
+
+// addresses type enum value 
+enum AddressType {
+  home
+  office
+}
+
+// products model
+model products {
+  id                Int                    @id @default(autoincrement())
+  author            users_meta             @relation(fields: [authorId], references: [userId])
+  authorId          Int
+  name              String
+  slug              String                 @unique
+  price             Float
+  regular_price     Float
+  sale_price        Float?
+  stock_quantity    Int?
+  stock_status      StockStatus            @default(in_stock)
+  sku               String?
+  description       String?
+  short_description String?
+  thumbnailId       Int?
+  thumbnail         media?                 @relation(fields: [thumbnailId], references: [id])
+  weight            Float?
+  length            Float?
+  width             Float?
+  height            Float?
+  status            ProductStatus          @default(publish)
+  categories        categoriesOnProducts[]
+  carts             productCarts[]
+  galleries         productGalleries[]
+  order_items       orderItems[]
+  wishlists         wishlists[]
+  reviews           productReviews[]
+  createdAt         DateTime               @default(now())
+  updatedAt         DateTime               @updatedAt
+}
+
+// product status enum / fixed value
+enum ProductStatus {
+  publish
+  draft
+  pending
+  trash
+}
+
+// stock status enum / fixed value 
+enum StockStatus {
+  in_stock
+  out_of_stock
+  on_waitlist_order
+}
+
+// product Gallery model 
+model productGalleries {
+  product   products @relation(fields: [productId], references: [id])
+  productId Int
+
+  media   media @relation(fields: [mediaId], references: [id])
+  mediaId Int
+
+  @@id([productId, mediaId])
+}
+
+// product category model
+model productCategories {
+  id        Int                    @id @default(autoincrement())
+  name      String                 @unique
+  slug      String                 @unique
+  photo     media?                 @relation(fields: [photoId], references: [id])
+  photoId   Int?
+  products  categoriesOnProducts[]
+  createdAt DateTime               @default(now())
+  updatedAt DateTime               @updatedAt
+}
+
+// product & category many to many relation model
+model categoriesOnProducts {
+  product    products          @relation(fields: [productId], references: [id])
+  productId  Int
+  category   productCategories @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+  @@id([productId, categoryId])
+}
+
+// cart model 
+model productCarts {
+  id        Int        @id @default(autoincrement())
+  product   products   @relation(fields: [productId], references: [id])
+  productId Int
+  user      users_meta @relation(fields: [userId], references: [userId])
+  userId    Int
+  quantity  Int
+}
+
+// product reviews model 
+model productReviews {
+  id      Int                 @id @default(autoincrement())
+  rating  Int
+  comment String?
+  status  ProductReviewStatus @default(pending)
+
+  user   users_meta @relation(fields: [userId], references: [userId])
+  userId Int
+
+  product   products @relation(fields: [productId], references: [id])
+  productId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// productReview Status enum 
+enum ProductReviewStatus {
+  pending
+  published
+  trash
+}
+
+// media model 
+model media {
+  id                Int                 @id @default(autoincrement())
+  url               String
+  user              users_meta          @relation(fields: [userId], references: [userId])
+  userId            Int
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  productCategories productCategories[]
+  product           products[]
+  galleries         productGalleries[]
+}
+
+// order model 
+model orders {
+  id             Int           @id @default(autoincrement())
+  order_status   OrderStatus   @default(pending)
+  payment_method String
+  payment_status PaymentStatus @default(pending)
+  sub_total      Float
+  tax_rate       Float
+  tax_total      Float
+  discount       Float
+  order_total    Float
+
+  user   users_meta @relation(fields: [userId], references: [userId])
+  userId Int
+
+  billing_address    addresses @relation(fields: [billing_address_id], references: [id], name: "billing")
+  billing_address_id Int
+
+  shipping_address    addresses @relation(fields: [shipping_address_id], references: [id], name: "shipping")
+  shipping_address_id Int
+
+  items orderItems[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// order status  enum values
+enum OrderStatus {
+  pending
+  processing
+  cancelled
+  completed
+  refunded
+}
+
+// order's payment status enum values 
+enum PaymentStatus {
+  pending
+  paid
+  failed
+}
+
+// order items model 
+model orderItems {
+  id       Int   @id @default(autoincrement())
+  quantity Int
+  price    Float
+
+  product   products @relation(fields: [productId], references: [id])
+  productId Int
+
+  order   orders @relation(fields: [orderId], references: [id])
+  orderId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// wishlist model 
+model wishlists {
+  id Int @id @default(autoincrement())
+
+  user   users_meta @relation(fields: [userId], references: [userId])
+  userId Int
+
+  product   products @relation(fields: [productId], references: [id])
+  productId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,21 @@
+.table-order td:nth-child(2) {
+    max-width: 700px !important;
+}
+.order-details-table .table-details .table tbody tr td h5 {
+    text-wrap: wrap;
+}
+.order-status span{
+    font-size: 14px !important;
+    font-family: "Public Sans", sans-serif;
+    transform: translateY(-10px);
+    background: linear-gradient(-90deg, #ff6b6b 0%, #ff4f4f 100%);
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 8px;
+}
+.order-status .completed{
+    background: var(--theme-color) !important;
+}
+.order-status .processing{
+    background: #ffa53b !important;
+}

@@ -1,0 +1,28 @@
+.order-status-btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  position: relative;
+  min-width: 90px;
+  text-align: center;
+}
+span.order-cancelled,
+span.order-refunded {
+  background-color: rgba(207, 20, 43, 0.2);
+  color: #cf142b;
+}
+span.order-pending {
+  background-color: rgba(154, 154, 154, 0.2);
+  color: #9a9a9a;
+}
+
+span.order-processing {
+  background-color: rgba(66, 186, 150, 0.2);
+  color: #42ba96;
+}
+
+span.order-completed {
+  background-color: var(--theme-color);
+  color: #fff;
+}

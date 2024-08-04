@@ -1,0 +1,9 @@
+.checkout-section-2 .left-sidebar-checkout .checkout-detail-box>ul>li .checkout-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customIconColor path, .customIconColor circle{
+    color: var(--theme-color);
+}

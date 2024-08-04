@@ -1,0 +1,38 @@
+.media-library-sec .library-box {
+    overflow: hidden;
+    height: 170px !important;
+}
+
+.media-library-sec .library-box .dropdown {
+  width: auto;
+}
+.media-action {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  padding: 5px 10px;
+  border-radius: 5px;
+  gap: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.media-action svg {
+  font-size: 18px;
+}
+
+.b_size_content::before {
+  content: none !important;
+}
+.media-library-sec :checked+label:before {
+    z-index: 9;
+}
+.img-box {
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.media-library-sec :checked+label img {
+    z-index: inherit;
+}

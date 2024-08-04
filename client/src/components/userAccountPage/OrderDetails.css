@@ -1,0 +1,158 @@
+.title-header h5 {
+    font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (1920 - 320)));
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+.title-header-block .card-order-section {
+    margin-top: 20px;
+    border-top: 1px solid rgba(33,37,41,0.15);
+    border-bottom: 1px solid rgba(33,37,41,0.15);
+    padding: 10px 0;
+}
+.title-header-block .card-order-section ul {
+    margin: -8px;
+    color: #212529;
+}
+.title-header-block .card-order-section ul li:first-child {
+    margin-left: 15px;
+}
+.title-header-block .card-order-section ul li {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 18px;
+    position: relative;
+    color: #4a5568;
+}
+
+.cart-section .cart-table {
+    overflow: hidden;
+    margin-bottom: 0;
+    border: none;
+}
+.cart-section .cart-table thead tr th {
+    border-bottom-width: 1px;
+    font-weight: bolder;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    border-top: 0;
+    border-bottom: 1px solid #eff2f7 !important;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--theme-color);
+}
+.order-details-table .table-details .table tbody {
+    border-bottom: 1px solid #ddd;
+}
+thead, tbody, tfoot, tr, td, th {
+    vertical-align: middle;
+}
+.order-details-table .table-details .table tbody tr td:nth-child(1) {
+    background-color: transparent;
+    min-width: 130px;
+}
+.order-details-table .table-details .table tbody tr:first-child td {
+    padding-top: 20px;
+}
+.cart-section tbody tr td a {
+    color: #7e7e7e;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+    margin-bottom: 0;
+}
+.order-details-table .table-details .table tbody tr td:nth-child(1) a img {
+    height: 80px;
+    width: 100px;
+    border-radius: 5px;
+}
+.cart-section tbody tr td p {
+    color: #777777;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+    margin-bottom: 0;
+    line-height: 18px;
+}
+.order-details-table .table-details .table tbody tr td h5 {
+    margin-top: 10px;
+    color: #212529;
+    text-wrap: wrap;
+}
+.cart-section tbody tr td h5 {
+    font-size: calc(15px + (16 - 15) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
+    margin: 10px 0 0 0;
+    font-weight: 400;
+}
+.table tfoot {
+    font-weight: bold;
+}
+.order-details-table .table-details .table tfoot tr.table-order:nth-child(n+3) {
+    border-bottom: 1px solid #ddd;
+}
+.order-details-table .table-details .table tfoot tr.table-order:last-child td {
+    padding: 20px 15px;
+}
+.order-details-table .table-details .table tfoot tr.table-order:first-child td {
+    padding: 20px 15px 10px;
+}
+.order-details-table .table-details .table tfoot tr.table-order:nth-child(3) td {
+    padding: 10px 15px 20px;
+}
+.order-details-table .table-details .table tfoot tr td {
+    padding: 10px 15px;
+}
+.order-details-table table{
+    background: transparent !important;
+}
+.order-details-table .order-success {
+    padding: calc(20px + (30 - 20) * ((100vw - 320px) / (1920 - 320)));
+    border-radius: 5px;
+    background-color: #f9f9f6;
+}
+.order-details-table .order-success h4 {
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: #212529;
+}
+.order-details-table .order-success .order-details {
+    margin-top: 0;
+}
+.order-details-table .order-success .order-details li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-transform: capitalize;
+    line-height: 1.6;
+    font-size: 15px;
+    margin-bottom: 3px;
+    color: #7e7e7e;
+}
+.order-details-table .order-success .delivery-sec h3 {
+    color: #212529;
+    text-transform: capitalize;
+    font-size: 18px;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+.order-details-table .order-success .delivery-sec h3 span {
+    font-weight: 700;
+}
+.order-details-table .order-success .delivery-sec a {
+    font-size: 16px;
+    text-transform: capitalize;
+    margin-top: 5px;
+    display: block;
+    font-weight: 600;
+}
+.order-details-table .order-success .payment-mode p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    color: #7e7e7e;
+    letter-spacing: 0.05rem;
+}
+.table-order td:nth-child(2) {
+    max-width: 300px !important;
+}

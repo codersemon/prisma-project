@@ -1,0 +1,282 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 20px;
+  clip-path: inset(0 100% 0 0);
+  animation: l5 2s steps(11) infinite;
+}
+.loader:before {
+  content: "Loading...";
+  font-family: "Public Sans", sans-serif;
+}
+@keyframes l5 {
+  to {
+    clip-path: inset(0 -1ch 0 0);
+  }
+}
+
+.loader.upload::before {
+  content: "Uploading...";
+}
+
+/* 
+* common css - Start
+*/
+::-moz-selection {
+  color: #fff !important;
+  background: #0da487 !important;
+}
+
+::selection {
+  color: #fff !important;
+  background: #0da487 !important;
+}
+.select-wrap input {
+  z-index: -1;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+/* 
+* common css - End
+*/
+
+/* 
+* Sidebar CSS - Start
+*/
+
+/* disable scrollbar  */
+#simple-bar::-webkit-scrollbar {
+  width: 0px !important;
+}
+
+/* sidebar style  */
+.sidebar-list > a {
+  padding: 14px 10px 12px;
+  margin: 8px 15px;
+  border-radius: 5px;
+  color: #fff;
+  display: flex !important;
+  align-items: center;
+  justify-content: start;
+  transition: all 0.2s ease-in-out;
+}
+.sidebar-list > a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+li.sidebar-list a svg:first-child {
+  font-size: 20px;
+  margin-right: 10px;
+}
+li.sidebar-list a svg:last-child {
+  font-size: 20px;
+  margin-left: auto;
+}
+
+.sidebar-submenu {
+  margin: 8px 15px 8px 30px;
+}
+.sidebar-submenu a {
+  color: #fff;
+  display: block;
+  padding: 10px 25px;
+  position: relative;
+}
+.sidebar-submenu a::before {
+  content: "";
+  position: absolute;
+  top: 48%;
+  left: 0;
+  width: 6px;
+  border-top: 2px solid #fff;
+}
+
+/* collapse sidebar css  */
+
+.sidebar-wrapper.close_icon .sidebar-links a span {
+  display: none;
+}
+.sidebar-wrapper.close_icon .sidebar-links a svg {
+  margin-right: 0;
+}
+.sidebar-wrapper.close_icon .sidebar-links a svg:last-child {
+  display: none;
+}
+.sidebar-wrapper.close_icon .sidebar-links a .sidebar-submenu {
+  display: none;
+}
+.sidebar-wrapper:hover .sidebar-links a span {
+  display: block;
+}
+.sidebar-wrapper:hover .sidebar-links a svg:first-child {
+  margin-right: 10px;
+}
+.sidebar-wrapper:hover .sidebar-links a svg:last-child {
+  display: block;
+}
+/* 
+* Sidebar CSS - End
+*/
+
+/* 
+* Product upload page - Start
+*/
+.no-bg-input input {
+  z-index: -1;
+}
+.remove-img-btn {
+  position: absolute;
+  top: -10px;
+  background: red !important;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  line-height: 19px;
+  text-align: center;
+}
+.file-uploader {
+  border: 2px dashed #eee;
+  background: #fafafa;
+  padding: 20px;
+  border-radius: 5px;
+}
+/* 
+* Product upload page - End
+*/
+
+/* 
+* product list page - Start 
+*/
+.actions li svg {
+  font-size: 18px;
+}
+.status-btn {
+  padding: 5px 10px;
+  text-transform: capitalize;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.status-publish, .status-published {
+  background-color: rgba(47, 135, 51, 0.15);
+  color: #2f8733;
+}
+.status-draft,
+.status-pending {
+  background-color: rgba(226, 36, 84, 0.15);
+  color: #e22454;
+}
+/* 
+* product list page - End 
+*/
+
+/* Datatable - Start  */
+.custom-datatable .rdt_TableHeadRow {
+  background: #f8f8f8;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+.custom-datatable .rdt_TableRow {
+  border: none !important;
+  padding: 7px 0;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.custom-datatable .rdt_TableRow:nth-child(even) {
+  background: #f8f8f8;
+}
+.rdt_Pagination {
+  border: none !important;
+}
+.filter-box {
+  text-align: right;
+}
+.filter-box input {
+  font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+  line-height: 32px;
+  padding-left: 15px !important;
+  background-color: #f9f9f6;
+  border-radius: calc(6px + (10 - 6) * ((100vw - 320px) / (1920 - 320)));
+  padding-right: 60px;
+  border: none;
+  margin-bottom: 30px !important;
+  width: 300px !important;
+}
+.top-filter-bar input {
+  margin: 0 !important;
+}
+.top-filter-bar select {
+  width: auto;
+  background-color: #f9f9f6;
+  border: none;
+}
+/* Datatable - Start  */
+
+/* popup modal  */
+.modal-header > div {
+  width: 100%;
+}
+
+/* File uploader component css  */
+.file-prev-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+.file-prev-wrapper .file-preview {
+  border: 1px solid #ddd;
+  margin: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  position: relative;
+  max-width: 150px;
+  max-height: 150px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.file-prev-wrapper .file-preview img {
+  width: 100%;
+  object-fit: cover;
+}
+.remove-img-btn {
+  top: 0px;
+  right: 0px;
+}
+
+/* pagination css  */
+.page-item.active .page-link, .page-link:hover {
+  background-color: var(--theme-color);
+  border-color: var(--theme-color);
+  color: #fff !important;
+}
+.page-link {
+  color: var(--theme-color) !important;
+}
+.page-link:focus{
+  box-shadow: none !important;
+}
+/* Sticky top css */
+.custom-sticky-top{
+  position: sticky;
+  top: 110px;
+}
+
+/* Rating css */
+.rating {
+  display: flex;
+  gap: 2px;
+}
+
+/* Sweetalert button css modify */
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+  background-color: var(--theme-color) !important;
+
+}
